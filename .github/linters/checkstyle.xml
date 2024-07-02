@@ -4,16 +4,10 @@
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
-    <!-- Define the tree of modules that define the style checks to be applied. -->
-
-    <!-- TreeWalker module to check the structure of the source code. -->
     <module name="TreeWalker">
-        <!-- Checks for Javadoc comments. -->
         <module name="JavadocType"/>
         <module name="JavadocMethod"/>
         <module name="JavadocVariable"/>
-
-        <!-- Checks for naming conventions. -->
         <module name="TypeName"/>
         <module name="MethodName"/>
         <module name="ParameterName"/>
@@ -21,8 +15,6 @@
         <module name="MemberName"/>
         <module name="PackageName"/>
         <module name="ConstantName"/>
-
-        <!-- Checks for coding style. -->
         <module name="EmptyBlock"/>
         <module name="EmptyStatement"/>
         <module name="NeedBraces"/>
@@ -34,12 +26,8 @@
         <module name="LeftCurly"/>
         <module name="RightCurly"/>
         <module name="OperatorWrap"/>
-
-        <!-- Checks for imports. -->
         <module name="AvoidStarImport"/>
         <module name="UnusedImports"/>
-
-        <!-- Checks for class design. -->
         <module name="VisibilityModifier"/>
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>

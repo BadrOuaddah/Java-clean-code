@@ -26,6 +26,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
       - name: Super-linter
         uses: super-linter/super-linter@v6.6.0
         env:
@@ -34,3 +40,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_JAVA: true
           LINTER_RULES_PATH: .github/linters
+          ACTIONS_RUNNER_DEBUG: true
