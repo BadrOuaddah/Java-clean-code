@@ -1,3 +1,6 @@
+/**
+ * This package is about Spring Boot Test contains the main class for test application
+ */
 package com.example.computer;
 
 import org.junit.jupiter.api.Test;
