@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/computers")
-public class ComputerController {
+public final class ComputerController {
 
     private final ComputerRepository computerRepository;
 
@@ -31,24 +31,46 @@ public class ComputerController {
         this.computerRepository = computerRepository;
     }
 
+    /**
+     * Get all computers.
+     *
+     * @return list of computers
+     */
     @GetMapping
     public ResponseEntity<List<Computer>> findAllComputers() {
         return new ResponseEntity<>(computerRepository.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * Get computer by ID.
+     *
+     * @param computerId the ID of the computer
+     * @return the computer if found
+     */
     @GetMapping(path = "/{computerId}")
-    public Optional<Computer> findComputerById(@PathVariable long computerId) {
-        return new ResponseEntity<>(computerRepository.findById(computerId), HttpStatus.OK).getBody();
+    public ResponseEntity<Optional<Computer>> findComputerById(
+            @PathVariable final long computerId) {
+        return new ResponseEntity<>(computerRepository.findById(computerId), HttpStatus.OK);
     }
 
+    /**
+     * Add a new computer.
+     *
+     * @param computer the computer to add
+     * @return the added computer
+     */
     @PostMapping
-    public ResponseEntity<Computer> addNewComputer(@RequestBody Computer computer) {
+    public ResponseEntity<Computer> addNewComputer(@RequestBody final Computer computer) {
         return new ResponseEntity<>(computerRepository.save(computer), HttpStatus.CREATED);
     }
 
+    /**
+     * Delete a computer.
+     *
+     * @param computerId the ID of the computer to delete
+     */
     @DeleteMapping(path = "/{computerId}")
-    public void deleteComputer(@PathVariable("computerId") Long computerId) {
+    public void deleteComputer(@PathVariable("computerId") final Long computerId) {
         computerRepository.deleteById(computerId);
     }
-
 }
