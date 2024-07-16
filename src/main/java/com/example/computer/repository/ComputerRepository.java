@@ -1,5 +1,5 @@
 /**
- * This package is about Repository layer contains the extends of JPA
+ * This package contains the Repository layer that extends JPA.
  */
 package com.example.computer.repository;
 
