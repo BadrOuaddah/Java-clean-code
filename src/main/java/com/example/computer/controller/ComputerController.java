@@ -20,16 +20,19 @@ import java.util.Optional;
 @RequestMapping(path = "api/v1/computers")
 public final class ComputerController {
 
-    private final ComputerRepository repository;
+    /**
+     * Repository for performing CRUD operations on Computer entities.
+     */
+    private final ComputerRepository computerRepo;
 
     /**
      * Constructs a new ComputerController with the specified repository.
      *
-     * @param repository the computer repository
+     * @param computerRepo the computer repository
      */
     @Autowired
-    public ComputerController(final ComputerRepository repository) {
-        this.repository = repository;
+    public ComputerController(final ComputerRepository computerRepo) {
+        this.computerRepo = computerRepo;
     }
 
     /**
@@ -39,7 +42,7 @@ public final class ComputerController {
      */
     @GetMapping
     public ResponseEntity<List<Computer>> findAllComputers() {
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(computerRepo.findAll(), HttpStatus.OK);
     }
 
     /**
@@ -51,7 +54,8 @@ public final class ComputerController {
     @GetMapping(path = "/{computerId}")
     public ResponseEntity<Optional<Computer>> findComputerById(
             @PathVariable final long computerId) {
-        return new ResponseEntity<>(repository.findById(computerId), HttpStatus.OK);
+        Optional<Computer> computer = computerRepo.findById(computerId);
+        return new ResponseEntity<>(computer, HttpStatus.OK);
     }
 
     /**
@@ -62,7 +66,8 @@ public final class ComputerController {
      */
     @PostMapping
     public ResponseEntity<Computer> addNewComputer(@RequestBody final Computer computer) {
-        return new ResponseEntity<>(repository.save(computer), HttpStatus.CREATED);
+        Computer savedComputer = computerRepo.save(computer);
+        return new ResponseEntity<>(savedComputer, HttpStatus.CREATED);
     }
 
     /**
@@ -72,6 +77,6 @@ public final class ComputerController {
      */
     @DeleteMapping(path = "/{computerId}")
     public void deleteComputer(@PathVariable("computerId") final Long computerId) {
-        repository.deleteById(computerId);
+        computerRepo.deleteById(computerId);
     }
 }
