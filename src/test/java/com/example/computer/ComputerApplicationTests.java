@@ -9,11 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ComputerApplicationTests {
 
-	/**
-	 * Test context loading.
-	 */
-	@Test
-	void contextLoads() {
-		// Add test implementation
-	}
+    /**
+     * Test context loading.
+     */
+    @Test
+    void contextLoads() {
+        // Add test implementation
+    }
 }
