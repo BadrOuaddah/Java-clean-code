@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Controller for handling computer-related requests.
+ */
 @RestController
 @RequestMapping(path = "api/v1/computers")
 public final class ComputerController {
