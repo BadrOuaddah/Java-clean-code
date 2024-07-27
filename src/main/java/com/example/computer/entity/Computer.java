@@ -10,7 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 /**
- * Represents a computer entity with attributes such as brand, model, and specifications.
+ * Represents a computer entity with attributes such as brand, model,
+ * and specifications.
  */
 @Data
 @NoArgsConstructor
