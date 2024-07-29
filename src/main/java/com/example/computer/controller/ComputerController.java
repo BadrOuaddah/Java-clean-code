@@ -26,16 +26,16 @@ public final class ComputerController {
     /**
      * Repository for performing CRUD operations on Computer entities.
      */
-    private final ComputerRepository computerRepo;
+    private final ComputerRepository repository;
 
     /**
      * Constructs a new ComputerController with the specified repository.
      *
-     * @param computerRepo the computer repository
+     * @param repository the computer repository
      */
     @Autowired
-    public ComputerController(final ComputerRepository computerRepo) {
-        this.computerRepo = computerRepo;
+    public ComputerController(final ComputerRepository repository) {
+        this.repository = repository;
     }
 
     /**
@@ -45,7 +45,7 @@ public final class ComputerController {
      */
     @GetMapping
     public ResponseEntity<List<Computer>> findAllComputers() {
-        return new ResponseEntity<>(computerRepo.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
 
     /**
@@ -57,7 +57,7 @@ public final class ComputerController {
     @GetMapping(path = "/{computerId}")
     public ResponseEntity<Optional<Computer>> findComputerById(
             @PathVariable final long computerId) {
-        Optional<Computer> computer = computerRepo.findById(computerId);
+        Optional<Computer> computer = repository.findById(computerId);
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
 
@@ -70,7 +70,7 @@ public final class ComputerController {
     @PostMapping
     public ResponseEntity<Computer> addNewComputer(
             @RequestBody final Computer computer) {
-        Computer savedComputer = computerRepo.save(computer);
+        Computer savedComputer = repository.save(computer);
         return new ResponseEntity<>(savedComputer, HttpStatus.CREATED);
     }
 
@@ -82,6 +82,6 @@ public final class ComputerController {
     @DeleteMapping(path = "/{computerId}")
     public void deleteComputer(
             @PathVariable("computerId") final Long computerId) {
-        computerRepo.deleteById(computerId);
+        repository.deleteById(computerId);
     }
 }
