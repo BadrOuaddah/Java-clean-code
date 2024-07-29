@@ -26,16 +26,16 @@ public final class ComputerController {
     /**
      * Repository for performing CRUD operations on Computer entities.
      */
-    private final ComputerRepository repository;
+    private final ComputerRepository repo;
 
     /**
      * Constructs a new ComputerController with the specified repository.
      *
-     * @param repository the computer repository
+     * @param repo the computer repository
      */
     @Autowired
-    public ComputerController(final ComputerRepository repository) {
-        this.repository = repository;
+    public ComputerController(final ComputerRepository repo) {
+        this.repo = repo;
     }
 
     /**
@@ -45,7 +45,7 @@ public final class ComputerController {
      */
     @GetMapping
     public ResponseEntity<List<Computer>> findAllComputers() {
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
     }
 
     /**
@@ -57,7 +57,7 @@ public final class ComputerController {
     @GetMapping(path = "/{computerId}")
     public ResponseEntity<Optional<Computer>> findComputerById(
             @PathVariable final long computerId) {
-        Optional<Computer> computer = repository.findById(computerId);
+        Optional<Computer> computer = repo.findById(computerId);
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
 
@@ -70,7 +70,7 @@ public final class ComputerController {
     @PostMapping
     public ResponseEntity<Computer> addNewComputer(
             @RequestBody final Computer computer) {
-        Computer savedComputer = repository.save(computer);
+        Computer savedComputer = repo.save(computer);
         return new ResponseEntity<>(savedComputer, HttpStatus.CREATED);
     }
 
@@ -82,6 +82,6 @@ public final class ComputerController {
     @DeleteMapping(path = "/{computerId}")
     public void deleteComputer(
             @PathVariable("computerId") final Long computerId) {
-        repository.deleteById(computerId);
+        repo.deleteById(computerId);
     }
 }
