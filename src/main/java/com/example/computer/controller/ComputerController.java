@@ -68,7 +68,8 @@ public final class ComputerController {
      * @return the added computer
      */
     @PostMapping
-    public ResponseEntity<Computer> addNewComputer(@RequestBody final Computer computer) {
+    public ResponseEntity<Computer> addNewComputer(
+            @RequestBody final Computer computer) {
         Computer savedComputer = computerRepo.save(computer);
         return new ResponseEntity<>(savedComputer, HttpStatus.CREATED);
     }
@@ -79,7 +80,8 @@ public final class ComputerController {
      * @param computerId the ID of the computer to delete
      */
     @DeleteMapping(path = "/{computerId}")
-    public void deleteComputer(@PathVariable("computerId") final Long computerId) {
+    public void deleteComputer(
+            @PathVariable("computerId") final Long computerId) {
         computerRepo.deleteById(computerId);
     }
 }
