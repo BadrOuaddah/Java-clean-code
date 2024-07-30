@@ -18,5 +18,10 @@
         <module name="JavadocNewlineAtEndOfFile"/>
         <module name="JavadocPeriod"/>
         <module name="JavadocTagFirstWordUpper"/>
+        <module name="HiddenField">
+            <property name="ignoreSetter" value="true"/>
+            <property name="ignoreGetter" value="true"/>
+            <property name="ignore" value="true"/>
+        </module>
     </module>
 </module>
