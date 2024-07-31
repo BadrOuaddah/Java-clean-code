@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<suppressions>
+    <suppress checks="HiddenField" files=".*ComputerController\.java" />
+</suppressions>

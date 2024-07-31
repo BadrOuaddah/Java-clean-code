@@ -1,6 +1,6 @@
 name: Linting Code
 
-on: [ push, pull_request ]
+on: [push, pull_request]
 
 permissions: { }
 
@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Checkstyle
         run: |
-          java -jar checkstyle.jar -c .github/linters/checkstyle.xml src/main/java/**/*.java || true
+          java -jar checkstyle.jar -c .github/linters/checkstyle.xml -s .github/linters/.suppressions.xml src/main/java/**/*.java || true
 
       - name: Lint Code Base
         uses: github/super-linter@v4

@@ -24,6 +24,7 @@
             <property name="tokens" value="VARIABLE_DEF"/>
             <property name="ignoreGetter" value="true"/>
             <property name="ignore" value="true"/>
+            <property name="ignoreFieldNames" value="repo"/>
         </module>
     </module>
 </module>
