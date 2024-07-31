@@ -1,6 +1,6 @@
 name: Linting Code
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 permissions: { }
 
@@ -26,14 +26,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_GOOGLE_JAVA_FORMAT: true
-          VALIDATE_JAVA: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install Checkstyle
         run: |
           wget -qO- https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.42/checkstyle-8.42-all.jar > checkstyle.jar
@@ -41,3 +33,11 @@ jobs:
       - name: Run Checkstyle
         run: |
           java -jar checkstyle.jar -c .github/linters/checkstyle.xml src/main/java/**/*.java
+
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_GOOGLE_JAVA_FORMAT: true
+          VALIDATE_JAVA: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
