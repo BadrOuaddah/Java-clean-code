@@ -31,11 +31,11 @@ public final class ComputerController {
     /**
      * Constructs a new ComputerController with the specified repository.
      *
-     * @param repo the computer repository
+     * @param repository the computer repository
      */
     @Autowired
-    public ComputerController(final ComputerRepository repo) {
-        this.repo = repo;
+    public ComputerController(final ComputerRepository repository) {
+        this.repo = repository;
     }
 
     /**

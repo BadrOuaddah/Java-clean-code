@@ -1,11 +1,11 @@
 name: Linting Code
 
-on: [push, pull_request]
-
-permissions: { }
+on:
+  push:
+  pull_request:
 
 jobs:
-  build:
+  lint:
     name: Lint
     runs-on: ubuntu-latest
 
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Checkstyle
         run: |
-          wget -qO- https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.42/checkstyle-8.42-all.jar > checkstyle.jar
+          wget -qO checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.42/checkstyle-8.42-all.jar
 
       - name: Run Checkstyle
         run: |
