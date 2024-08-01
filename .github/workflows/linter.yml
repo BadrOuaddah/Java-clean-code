@@ -41,3 +41,8 @@ jobs:
           VALIDATE_GOOGLE_JAVA_FORMAT: true
           VALIDATE_JAVA: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup Code
+        uses: ArturWincenciak/ReSharper_CleanupCode@v2.0
+        with:
+        solution: 'ReSharperCleanupCodeDemo.sln'
