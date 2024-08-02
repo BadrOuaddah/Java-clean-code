@@ -13,6 +13,9 @@ import java.util.Optional;
 @Service
 public final class ComputerService {
 
+    /**
+     * The repository for computer entities.
+     */
     private final ComputerRepository computerRepository;
 
     /**
@@ -20,8 +23,8 @@ public final class ComputerService {
      *
      * @param computerRepository the computer repository
      */
-    public ComputerService(final ComputerRepository computerRepository) {
-        this.computerRepository = computerRepository;
+    public ComputerService(final ComputerRepository repository) {
+        this.computerRepository = repository;
     }
 
     /**
