@@ -21,7 +21,7 @@ public final class ComputerService {
     /**
      * Constructor for ComputerService.
      *
-     * @param computerRepository the computer repository
+     * @param repository the computer repository
      */
     public ComputerService(final ComputerRepository repository) {
         this.computerRepository = repository;
