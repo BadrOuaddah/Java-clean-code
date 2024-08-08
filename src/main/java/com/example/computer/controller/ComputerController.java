@@ -1,7 +1,7 @@
 package com.example.computer.controller;
 
 import com.example.computer.entity.Computer;
-import com.example.computer.repository.ComputerRepository;
+import com.example.computer.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,26 +26,26 @@ public final class ComputerController {
     /**
      * Repository for performing CRUD operations on Computer entities.
      */
-    private final ComputerRepository repo;
+    private final ComputerService computerService;
 
     /**
-     * Constructs a new ComputerController with the specified repository.
+     * Constructs a new ComputerController with the specified service.
      *
-     * @param repository the computer repository
+     * @param computerService the computer service
      */
     @Autowired
-    public ComputerController(final ComputerRepository repository) {
-        this.repo = repository;
+    public ComputerController(final ComputerService computerService) {
+        this.computerService = computerService;
     }
 
     /**
      * Get all computers.
      *
-     * @return list of computers
+     * @return get list of computers
      */
     @GetMapping
     public ResponseEntity<List<Computer>> findAllComputers() {
-        return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(computerService.getAllComputer(), HttpStatus.OK);
     }
 
     /**
@@ -57,7 +57,7 @@ public final class ComputerController {
     @GetMapping(path = "/{computerId}")
     public ResponseEntity<Optional<Computer>> findComputerById(
             @PathVariable final long computerId) {
-        Optional<Computer> computer = repo.findById(computerId);
+        Optional<Computer> computer = computerService.getOneComputer(computerId);
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
 
@@ -70,7 +70,7 @@ public final class ComputerController {
     @PostMapping
     public ResponseEntity<Computer> addNewComputer(
             @RequestBody final Computer computer) {
-        Computer savedComputer = repo.save(computer);
+        Computer savedComputer = computerService.addComputer(computer);
         return new ResponseEntity<>(savedComputer, HttpStatus.CREATED);
     }
 
@@ -81,7 +81,7 @@ public final class ComputerController {
      */
     @DeleteMapping(path = "/{computerId}")
     public void deleteComputer(
-            @PathVariable("computerId") final Long computerId) {
-        repo.deleteById(computerId);
+            @PathVariable("computerId") final Long computerId) throws Exception {
+        computerService.deleteComputer(computerId);
     }
 }
