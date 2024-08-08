@@ -7,12 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Main application class for the computer application.
  */
 @SpringBootApplication
-public final class ComputerApplication {
-
-    // Private constructor to prevent instantiation
-    private ComputerApplication() {
-        throw new UnsupportedOperationException("Utility class");
-    }
+public class ComputerApplication {
 
     /**
      * Main method for the application.
