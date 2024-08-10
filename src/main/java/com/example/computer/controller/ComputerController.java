@@ -31,11 +31,11 @@ public final class ComputerController {
     /**
      * Constructs a new ComputerController with the specified service.
      *
-     * @param computerService the computer service
+     * @param service the computer service
      */
     @Autowired
-    public ComputerController(final ComputerService computerService) {
-        this.computerService = computerService;
+    public ComputerController(final ComputerService service) {
+        this.computerService = service;
     }
 
     /**
