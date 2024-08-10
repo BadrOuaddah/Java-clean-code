@@ -64,9 +64,11 @@ public final class ComputerService {
      * @return the updated computer
      * @throws Exception if the computer is not found
      */
-    public Computer updateComputer(final Long id, final Computer computer) throws Exception {
+    public Computer updateComputer(final Long id, final Computer computer)
+            throws Exception {
         computerRepository.findById(id)
-                .orElseThrow(() -> new Exception("Document not found with id : " + id));
+                .orElseThrow(() ->
+                        new Exception("Document not found with id : " + id));
         return computerRepository.save(computer);
     }
 
@@ -78,7 +80,8 @@ public final class ComputerService {
      */
     public void deleteComputer(final Long id) throws Exception {
         computerRepository.findById(id)
-                .orElseThrow(() -> new Exception("Document not found with id : " + id));
+                .orElseThrow(() ->
+                        new Exception("Document not found with id : " + id));
         computerRepository.deleteById(id);
     }
 }
