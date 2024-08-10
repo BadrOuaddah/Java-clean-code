@@ -13,7 +13,9 @@ public final class ComputerApplication {
      * Private constructor to prevent instantiation of this utility class.
      */
     private ComputerApplication() {
-        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
+        throw new UnsupportedOperationException(
+                "This is a utility class and cannot be instantiated"
+        );
     }
 
     /**

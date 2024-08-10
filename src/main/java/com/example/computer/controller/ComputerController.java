@@ -45,7 +45,9 @@ public final class ComputerController {
      */
     @GetMapping
     public ResponseEntity<List<Computer>> findAllComputers() {
-        return new ResponseEntity<>(computerService.getAllComputer(), HttpStatus.OK);
+        return new ResponseEntity<>(
+                computerService.getAllComputer(), HttpStatus.OK
+        );
     }
 
     /**
@@ -57,7 +59,8 @@ public final class ComputerController {
     @GetMapping(path = "/{computerId}")
     public ResponseEntity<Optional<Computer>> findComputerById(
             @PathVariable final long computerId) {
-        Optional<Computer> computer = computerService.getOneComputer(computerId);
+        Optional<Computer> computer =
+                computerService.getOneComputer(computerId);
         return new ResponseEntity<>(computer, HttpStatus.OK);
     }
 
@@ -70,7 +73,8 @@ public final class ComputerController {
     @PostMapping
     public ResponseEntity<Computer> addNewComputer(
             @RequestBody final Computer computer) {
-        Computer savedComputer = computerService.addComputer(computer);
+        Computer savedComputer =
+                computerService.addComputer(computer);
         return new ResponseEntity<>(savedComputer, HttpStatus.CREATED);
     }
 
@@ -81,7 +85,8 @@ public final class ComputerController {
      */
     @DeleteMapping(path = "/{computerId}")
     public void deleteComputer(
-            @PathVariable("computerId") final Long computerId) throws Exception {
+            @PathVariable("computerId") final Long computerId)
+            throws Exception {
         computerService.deleteComputer(computerId);
     }
 }
