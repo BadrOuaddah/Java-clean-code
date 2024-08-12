@@ -21,18 +21,18 @@ jobs:
           fetch-depth: 0
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: Install Checkstyle
         run: |
-          wget -qO checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.42/checkstyle-8.42-all.jar
+          wget -qO checkstyle.jar https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.17.0/checkstyle-10.17.0-all.jar
 
       - name: Run Checkstyle
         run: |
-          java -jar checkstyle.jar -c .github/linters/checkstyle.xml -s .github/linters/.suppressions.xml src/main/java/**/*.java || true
+          java -jar checkstyle.jar -c src/main/resources/linters/checkstyle.xml src/main/java/**/*.java || true
 
       - name: Lint Code Base
         uses: github/super-linter@v4
@@ -41,11 +41,6 @@ jobs:
           VALIDATE_GOOGLE_JAVA_FORMAT: true
           VALIDATE_JAVA: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Cleanup Code
-        uses: ArturWincenciak/ReSharper_CleanupCode@v2.0
-        with:
-          solution: 'ReSharperCleanupCodeDemo.sln'
 
       - name: Build
         run: mvn --batch-mode --update-snapshots verify
