@@ -12,7 +12,6 @@
         <module name="JavadocTagContinuationIndentation"/>
         <module name="JavadocStyle"/>
         <module name="JavadocContentLocation"/>
-        <module name="JavadocEmptyLine"/>
         <module name="JavadocMissingLeadingAsterisk"/>
         <module name="JavadocMissingWhitespaceAfterAsterisk"/>
         <module name="JavadocNewlineAtEndOfFile"/>
