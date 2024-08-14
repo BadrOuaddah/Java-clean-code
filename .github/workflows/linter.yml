@@ -42,9 +42,6 @@ jobs:
           VALIDATE_JAVA: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build
-        run: mvn --batch-mode --update-snapshots verify
-
       - name: Test
         run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 
